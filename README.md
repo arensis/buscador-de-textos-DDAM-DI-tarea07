@@ -1,4 +1,5 @@
 # <img src="icon.svg" width="45" height="45" align="center"> Buscador de Texto App
+![GitHub Release](https://img.shields.io/github/v/release/:user/:repo)&nbsp;&nbsp;&nbsp;![GitHub License](https://img.shields.io/github/license/arensis/buscador-de-textos-DDAM-DI-tarea07)&nbsp;&nbsp;&nbsp;![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/arensis/buscador-de-textos-DDAM-DI-tarea07/d)&nbsp;&nbsp;&nbsp;![GitHub top language](https://img.shields.io/github/languages/top/arensis/buscador-de-textos-DDAM-DI-tarea07)
 
 Este proyecto consiste en una aplicación Java diseñada para la búsqueda de términos dentro de archivos de texto.
 
