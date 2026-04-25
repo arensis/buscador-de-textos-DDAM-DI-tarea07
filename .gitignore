@@ -1,0 +1,41 @@
+# Compilados de Java
+*.class
+*.log
+*.ctxt
+
+# Empaquetados
+*.war
+*.ear
+*.zip
+*.tar.gz
+*.jar
+# No ignorar librerías de la carpeta lib de la raíz del proyecto
+!lib/*.jar
+
+# Herramientas Build (Ant, IntelliJ, Eclipse)
+build/
+dist/
+bin/ 
+out/ 
+
+# IDEs y editores (IntelliJ, Eclipse, VS Code, NetBeans)
+.idea/
+*.iml
+*.iws
+*.ipr
+.project
+.classpath
+.settings/
+.vscode/
+nbproject/private/
+nbbuild/
+nbdist/
+nbactions.xml
+nb-configuration.xml
+
+# Sistema y archivos temporales
+.DS_Store
+Thumbs.db
+*.tmp
+*.bak
+*.log
