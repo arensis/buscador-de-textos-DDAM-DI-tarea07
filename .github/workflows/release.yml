@@ -6,6 +6,11 @@ on:
     tags:
       - 'v*'
 
+# Proporcionamos permisos para que el action que genera la release pueda
+# incluir los archivos de la release (write)
+permissions:
+  contents: write
+
 jobs:
   build-and-release:
     # Uso una máquina de windows para automatizar el proceso de la generación del exe con el script
