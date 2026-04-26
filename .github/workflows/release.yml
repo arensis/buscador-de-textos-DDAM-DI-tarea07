@@ -37,13 +37,13 @@ jobs:
       # Para que quede más profesional obtengo el tag para poder después renombrar
       # los ficheros para que incluyan la versión, para ello la guardamos en github_env
       # para tenerla disponible en el siguiente step (ya que es un action externa)
-    - name: Renombrar archivos con la versión
-      shell: bash
+    - name: Renombrar y Comprimir archivos
+      shell: powershell
       run: |
-        VERSION=${GITHUB_REF#refs/tags/}
-        mv BuscadorTextoApp.exe "buscadortextoapp-$VERSION.exe"
-        zip -r "buscadortextoapp-$VERSION.zip" dist/Fuentes_Tarea_U07.jar lib/
-        echo "VERSION_TAG=$VERSION" >> $GITHUB_ENV
+        $version = $env:GITHUB_REF -replace 'refs/tags/', ''
+        Rename-Item -Path "BuscadorTextoApp.exe" -NewName "buscadortextoapp-$version.exe"
+        Compress-Archive -Path "dist/Fuentes_Tarea_U07.jar", "lib" -DestinationPath "buscadortextoapp-$version.zip"
+        echo "VERSION_TAG=$version" >> $env:GITHUB_ENV
 
     # El action oficial para release de github se deprecó hace unos años y ahora mismo
     # parece que el estandar según estuve leyendo es la de sofprops que tiene opciones
