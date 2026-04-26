@@ -25,8 +25,14 @@ jobs:
     - name: Compilar Proyecto con Ant (Generar JAR)
       run: ant -f build.xml jar
 
+    # Instalamos NSIS y generamos el fichero .exe a través del script.nsi
+    - name: Instalar NSIS
+      run: choco install nsis -y
+
     - name: Compilar Instalador con NSIS
-      run: makensis script.nsi
+      shell: powershell
+      run: |
+        & "C:\Program Files (x86)\NSIS\makensis.exe" script.nsi
 
       # Para que quede más profesional obtengo el tag para poder después renombrar
       # los ficheros para que incluyan la versión, para ello la guardamos en github_env
