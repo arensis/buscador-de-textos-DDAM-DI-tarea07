@@ -18,7 +18,6 @@ jobs:
       with:
         java-version: '21'
         distribution: 'temurin'
-        cache: ant
 
     - name: Build con Ant
       run: ant -f build.xml compile
