@@ -3,23 +3,21 @@
 
 Este proyecto consiste en una aplicación Java diseñada para la búsqueda de términos dentro de archivos de texto.
 
-## ⬇️ Descarga y Uso
+## 💻 Requisitos previos
 
-### 💻 Requisitos mínimos
-
-- **Sistema operativo**:  🪟 *Windows 7* o superior
-- **Software requerido**: ☕ *Java (JRE) 8* o superior
+- 🪟 *Windows 7* o superior
+- ☕ *Java (JRE) 8* o superior
     - **¿No tienes Java instalado?** Puedes descargar e instalar la versión gratuita desde la web oficial **[Java.com (Descarga de Java)](https://www.java.com/es/download/)**
 
-### 💿 Instalación de la aplicación
+## 💿 Instalación de la aplicación
 
 1. Diríjase a la sección de **[RELEASES](https://github.com/arensis/buscado-de-textos-DDAM-DI-tarea07/releases)** y descargue el archivo `BuscadorTextoApp.exe`.
 
 2. Ejecute el instalador. Este creará automáticamente accesos directos en su Escritorio y Menú Inicio.
 
-###  💡Solución de problemas
+##  💡Solución de problemas
 
-#### La aplicación no arranca
+### La aplicación no arranca
 
 Si es la primera vez que instalas Java y no has reiniciado el ordenador puede que la aplicación no funcione al intentar abrirla. De ser así reinicia el ordenador y prueba de nuevo 
 
@@ -47,11 +45,32 @@ Si es la primera vez que instalas Java y no has reiniciado el ordenador puede qu
 4. El archivo `BuscadorTextoApp.exe` aparecerá en la raíz, listo para su distribución.
 
 ### 📂 Estructura del Proyecto
-- `/src`: Código fuente Java.
-- `/lib`: Dependencias del proyecto.
-- `nbproject`
-- `script.nsi`: Configuración del instalador profesional (gestión de rutas con espacios, accesos directos y desinstalador limpio).
-- `icono.svg` / `.ico`: Iconos de aplicación
-    - SVG: Icono en formato vectorial creado con **Inkscape**
-    - ICO: Icono convertido para la interfaz de windows
-- `.gitignore`: Configurado para excluir archivos generados (`/build`, `/dist` y configuraciones de netbeans personalizadas).
+
+```text
+buscador-de-textos-DDAM-DI-tarea07/
+├── .gitignore               # Archivos y carpetas ignorados por Git
+├── LICENSE                  # Licencia MIT del proyecto
+├── README.md                # Documentación del proyecto
+├── build.xml                # Script de compilación de Ant (NetBeans)
+├── manifest.mf              # Manifiesto para el archivo JAR
+├── script.nsi               # Script de NSIS para generar el instalador .exe
+├── icon.ico                 # Icono de la aplicación (formato ICO)
+├── icon.svg                 # Icono de la aplicación (formato SVG) creado con Inkscape
+├── lib/                     # Librerías externas
+│   └── swing-layout-1.0.3.jar
+├── nbproject/               # Configuración del proyecto NetBeans
+│   ├── project.properties
+│   └── project.xml
+└── src/                     # Código fuente Java
+    └── fuentes_tarea_u07/
+        ├── Formulario.form
+        └── Formulario.java
+```
+
+## 🤝 Cómo contribuir
+- Haz un fork del repositorio
+- Crea una rama: git switch -c feature/mi-mejora
+- Abre un Pull Request describiendo los cambios
+
+## 📄 Licencia
+Distribuido bajo licencia **MIT**. Consulta LICENSE para más información.
