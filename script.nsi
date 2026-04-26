@@ -33,12 +33,17 @@ Section "Instalar"
   SetOutPath $INSTDIR
 
   ; Copiar el JAR, librería Swing Layout Extension e icono de aplicación
-  File "Fuentes_Tarea_U07.jar"
-  File /r "lib"
+  File "dist\Fuentes_Tarea_U07.jar"
   File "icon.ico"  
   
+  ; Copiar la librería swing layout en carpeta lib
+  SetOutPath "$INSTDIR\lib"  
+  File "lib\swing-layout-1.0.3.jar"
+
+  ; Volvemos a la raíz para el resto del script
+  SetOutPath $INSTDIR
+
   ; Crear acceso directo en escritorio con icono
-  
   CreateShortcut "$DESKTOP\BuscadorTextoApp.lnk" "javaw.exe" '-jar $\"$INSTDIR\Fuentes_Tarea_U07.jar$\"' "$INSTDIR\icon.ico"
 
   ; Crear acceso en menú inicio
