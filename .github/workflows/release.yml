@@ -1,0 +1,53 @@
+name: Crear Release con Instalador
+
+on:
+  # Configuro que el workflow se lance sólo cuando se cree (push) un nuevo tag  
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  build-and-release:
+    # Uso una máquina de windows para automatizar el proceso de la generación del exe con el script
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout del código
+      uses: actions/checkout@v4
+
+    - name: Configurar JDK 22
+      uses: actions/setup-java@v4
+      with:
+        java-version: '22'
+        distribution: 'temurin'
+
+      # Compiamos el proyecto para que se genere la carpeta dist
+    - name: Compilar Proyecto con Ant (Generar JAR)
+      run: ant -f build.xml jar
+
+    - name: Compilar Instalador con NSIS
+      run: makensis script.nsi
+
+      # Para que quede más profesional obtengo el tag para poder después renombrar
+      # los ficheros para que incluyan la versión, para ello la guardamos en github_env
+      # para tenerla disponible en el siguiente step (ya que es un action externa)
+    - name: Renombrar archivos con la versión
+      shell: bash
+      run: |
+        VERSION=${GITHUB_REF#refs/tags/}
+        mv BuscadorTextoApp.exe "buscadortextoapp-$VERSION.exe"
+        zip -r "buscadortextoapp-$VERSION.zip" dist/Fuentes_Tarea_U07.jar lib/
+        echo "VERSION_TAG=$VERSION" >> $GITHUB_ENV
+
+    # El action oficial para release de github se deprecó hace unos años y ahora mismo
+    # parece que el estandar según estuve leyendo es la de sofprops que tiene opciones
+    # interesantes como la de generar notas de forma automática y subida de archivos
+    - name: Crear GitHub Release
+      uses: softprops/action-gh-release@v1
+      with:
+        generate_release_notes: true
+        files: |
+          buscadortextoapp-${{ env.VERSION_TAG }}.exe
+          buscadortextoapp-${{ env.VERSION_TAG }}.zip
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
